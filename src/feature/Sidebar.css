@@ -41,7 +41,6 @@
 .SidebarList li {
   display: flex;
   align-items: center;
-  gap: 16px;
 }
 .SidebarList img {
   width: 24px;
@@ -52,6 +51,7 @@
   margin: 0;
   font-size: 12px;
   color: var(--secondary-light--100);
+  padding: 15px;
 }
 
 .title {
