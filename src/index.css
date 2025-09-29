@@ -1,6 +1,5 @@
 :root {
   --yellow-primary--100: #fbba00;
-
   --red-primary--100: #fe2a2a;
 
   --secondary-dark--100: #292c31;
@@ -39,6 +38,9 @@
     url("../public/Iransans//IRANSansWeb_Bold.ttf") format("truetype");
   font-weight: 700;
 }
+
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-navigations/styles/material.css";
 
 html {
   font-family: "iranSans";
