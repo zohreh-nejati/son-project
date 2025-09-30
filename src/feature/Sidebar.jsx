@@ -1,67 +1,155 @@
 import { SidebarComponent } from "@syncfusion/ej2-react-navigations";
+import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
 // import { useRef, useState } from "react";
 import "./Sidebar.css";
-
+// const sidebardData = [
 const sidebardData = [
-  { title: "ماژول‌های پایه", type: "title" },
-  { title: "اعلان‌ها", icon: "/icons/sidebar/Notificatins-Disable.svg" },
-  { title: "وظایف", icon: "/icons/sidebar/Duties-Disable.svg" },
-  { title: "تکمیل آمار", icon: "/icons/sidebar/statistic-Disable.svg" },
+  { nodeId: "01", nodeText: "ماژول‌های پایه" },
   {
-    title: "مدیریت سامانه",
-    icon: "/icons/sidebar/System-management-Disable.svg",
-  },
-  { title: "گزارش‌ها", icon: "/icons/sidebar/Reports-Disable.svg" },
-  { title: "داشبوردها", icon: "/icons/sidebar/Dashboard-Disable.svg" },
-  { title: "مستندات", icon: "/icons/sidebar/Documents-Disable.svg" },
-  { title: "ماژول‌های مدیریت مالی", type: "title" },
-  {
-    title: "گزارشات و صورت‌های مالی",
-    icon: "/icons/sidebar/Bar-Chart-Disable.svg",
-  },
-  { title: "حسابداری هزینه‌ها", icon: "/icons/sidebar/Money-bill-Disable.svg" },
-  {
-    title: "تجمیع و بستن حساب‌ها",
-    icon: "/icons/sidebar/User-Account-Disable.svg",
-  },
-  { title: "تلفیق", icon: "/icons/sidebar/Shape-union-Disable.svg" },
-  { title: "مجامع", icon: "/icons/sidebar/Collection-Disable.svg" },
-  { title: "ماژول‌های مدیریت استراتژی", type: "title" },
-  {
-    title: "پیش‌بینی و برنامه‌ریزی",
-    icon: "/icons/sidebar/Note-Disable.svg",
-  },
-  { title: "بودجه‌ریزی", icon: "/icons/sidebar/Wallet-Disable.svg" },
-  {
-    title: "کارت امتیازی متوازن",
-    icon: "/icons/sidebar/Documents-Disable.svg",
+    nodeId: "02",
+    nodeText: "اعلان‌ها",
+    nodeTemplate: "/icons/sidebar/Notificatins-Disable.svg",
   },
   {
-    title: "کارت امتیازی متوازن فردی",
-    icon: "/icons/sidebar/Credit-Card-Disable.svg",
+    nodeId: "03",
+    nodeText: "وظایف",
+    nodeTemplate: "/icons/sidebar/Duties-Disable.svg",
   },
-  { title: "سایر ماژول‌ها", type: "title" },
-  { title: "حسابرسی", icon: "/icons/sidebar/Contact-card-Disable.svg" },
+  {
+    nodeId: "04",
+    nodeText: "تکمیل آمار",
+    nodeTemplate: "/icons/sidebar/statistic-Disable.svg",
+  },
+  {
+    nodeId: "05",
+    nodeText: "مدیریت سامانه",
+    nodeTemplate: "/icons/sidebar/System-management-Disable.svg",
+    nodeChild: [
+      { nodeId: "05-01", nodeText: "Calendar" },
+      { nodeId: "05-02", nodeText: "DatePicker" },
+      { nodeId: "05-03", nodeText: "DateTimePicker" },
+      { nodeId: "05-04", nodeText: "DateRangePicker" },
+      { nodeId: "05-05", nodeText: "TimePicker" },
+      { nodeId: "05-06", nodeText: "SideBar" },
+    ],
+  },
+  {
+    nodeId: "06",
+    nodeText: "گزارش‌ها",
+    nodeTemplate: "/icons/sidebar/Reports-Disable.svg",
+  },
+  {
+    nodeId: "07",
+    nodeText: "داشبوردها",
+    nodeTemplate: "/icons/sidebar/Dashboard-Disable.svg",
+  },
+  {
+    nodeId: "08",
+    nodeText: "مستندات",
+    nodeTemplate: "/icons/sidebar/Documents-Disable.svg",
+  },
+  { nodeId: "09", nodeText: "ماژول‌های مدیریت مالی" },
+  {
+    nodeId: "10",
+    nodeText: "گزارشات و صورت‌های مالی",
+    nodeTemplate: "/icons/sidebar/Bar-Chart-Disable.svg",
+  },
+  {
+    nodeId: "11",
+    nodeText: "حسابداری هزینه‌ها",
+    nodeTemplate: "/icons/sidebar/Money-bill-Disable.svg",
+  },
+  {
+    nodeId: "12",
+    nodeText: "تجمیع و بستن حساب‌ها",
+    nodeTemplate: "/icons/sidebar/User-Account-Disable.svg",
+  },
+  {
+    nodeId: "13",
+    nodeText: "تلفیق",
+    nodeTemplate: "/icons/sidebar/Shape-union-Disable.svg",
+  },
+  {
+    nodeId: "14",
+    nodeText: "مجامع",
+    nodeTemplate: "/icons/sidebar/Collection-Disable.svg",
+  },
+  { nodeId: "15", nodeText: "ماژول‌های مدیریت استراتژی" },
+  {
+    nodeId: "16",
+    nodeText: "پیش‌بینی و برنامه‌ریزی",
+    nodeTemplate: "/icons/sidebar/Note-Disable.svg",
+  },
+  {
+    nodeId: "17",
+    nodeText: "بودجه‌ریزی",
+    nodeTemplate: "/icons/sidebar/Wallet-Disable.svg",
+  },
+  {
+    nodeId: "18",
+    nodeText: "کارت امتیازی متوازن",
+    nodeTemplate: "/icons/sidebar/Documents-Disable.svg",
+  },
+  {
+    nodeId: "19",
+    nodeText: "کارت امتیازی متوازن فردی",
+    nodeTemplate: "/icons/sidebar/Credit-Card-Disable.svg",
+  },
+  { nodeId: "20", nodeText: "سایر ماژول‌ها" },
+  {
+    nodeId: "21",
+    nodeText: "حسابرسی",
+    nodeTemplate: "/icons/sidebar/Contact-card-Disable.svg",
+  },
 ];
 
 function Sidebar() {
-  let dockBar;
+  // let dockBar;
+  let sidebarobj;
+  let treeviewobj;
+  let target = ".main_content";
+  let fields = {
+    dataSource: sidebardData,
+    id: "nodeId",
+    text: "nodeText",
+    child: "nodeChild",
+  };
   // Toggle(Open/Close) the Sidebar
+  // function toggleClick() {
+  //   sidebarobj.toggle();
+  // }
+
+  function onCreate() {
+    sidebarobj.element.style.visibility = "";
+  }
+
+  function onClose() {
+    treeviewobj.collapseAll();
+  }
+
   function toggleClick() {
-    dockBar.toggle();
+    if (sidebarobj.isOpen) {
+      sidebarobj.hide();
+      treeviewobj.collapseAll();
+    } else {
+      sidebarobj.show();
+      treeviewobj.expandAll();
+    }
   }
 
   return (
     <SidebarComponent
       id="dockSidebar"
-      ref={(Sidebar) => (dockBar = Sidebar)}
+      ref={(Sidebar) => (sidebarobj = Sidebar)}
       enableDock={true}
       dockSize="72px"
       width="260px"
-      target="test1"
+      target={target}
       enableRtl
       position="Right"
       // type="Push"
+      created={onCreate}
+      close={onClose}
     >
       <div className="dock">
         <div className="sidebarHeader">
@@ -81,8 +169,16 @@ function Sidebar() {
             ></img>
           </span>
         </div>
+        <div>
+          <TreeViewComponent
+            id="main-treeview"
+            ref={(Treeview) => (treeviewobj = Treeview)}
+            fields={fields}
+            expandOn="Click"
+          />
+        </div>
 
-        <ul className="SidebarList">
+        {/* <ul className="SidebarList">
           {sidebardData.map((list) => (
             <li key={list.title} className={list.type && "listTitle"}>
               {list.type ? (
@@ -93,7 +189,7 @@ function Sidebar() {
               <span className="e-text">{list.title}</span>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </SidebarComponent>
   );
