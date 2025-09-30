@@ -19,12 +19,12 @@ const sidebardData = [
     title: "گزارشات و صورت‌های مالی",
     icon: "/icons/sidebar/Bar-Chart-Disable.svg",
   },
-  { title: "حسابداری هزینه‌ها", icon: "/icons/sidebar/Money-Bill-Disable.svg" },
+  { title: "حسابداری هزینه‌ها", icon: "/icons/sidebar/Money-bill-Disable.svg" },
   {
     title: "تجمیع و بستن حساب‌ها",
     icon: "/icons/sidebar/User-Account-Disable.svg",
   },
-  { title: "تلفیق", icon: "/icons/sidebar/Shape-union-Disablee.svg" },
+  { title: "تلفیق", icon: "/icons/sidebar/Shape-union-Disable.svg" },
   { title: "مجامع", icon: "/icons/sidebar/Collection-Disable.svg" },
   { title: "ماژول‌های مدیریت استراتژی", type: "title" },
   {
@@ -41,12 +41,10 @@ const sidebardData = [
     icon: "/icons/sidebar/Credit-Card-Disable.svg",
   },
   { title: "سایر ماژول‌ها", type: "title" },
-  { title: "حسابرسی", icon: "/icons/sidebar/Contact-Card-Disable.svg" },
+  { title: "حسابرسی", icon: "/icons/sidebar/Contact-card-Disable.svg" },
 ];
 
-// export default Sidebar;
-
-function App() {
+function Sidebar() {
   let dockBar;
   // Toggle(Open/Close) the Sidebar
   function toggleClick() {
@@ -61,7 +59,7 @@ function App() {
         ref={(Sidebar) => (dockBar = Sidebar)}
         enableDock={true}
         dockSize="72px"
-        width="255px"
+        width="260px"
         type="Push"
       >
         <div className="dock">
@@ -83,7 +81,7 @@ function App() {
             </span>
           </div>
           <ul>
-            <ul className="SidebarList" onClick={toggleClick}>
+            <ul className="SidebarList">
               {sidebardData.map((list) => (
                 <li key={list.title} className={list.type && "listTitle"}>
                   {list.type ? (
@@ -95,46 +93,14 @@ function App() {
                       alt="notif icon"
                     ></img>
                   )}
-                  {/* {isOpen && <h1 className="e-text">{list.title}</h1>} */}
                   <span className="e-text">{list.title}</span>
                 </li>
               ))}
             </ul>
-
-            {/* <li className="sidebar-item" id="toggle" onClick={toggleClick}>
-              <span className="e-icons expand" />
-              <span className="e-text" title="menu">
-                Menu
-              </span>
-            </li>
-            <li className="sidebar-item">
-              <span className="e-icons home" />
-              <span className="e-text" title="home">
-                Home
-              </span>
-            </li>
-            <li className="sidebar-item">
-              <span className="e-icons profile" />
-              <span className="e-text" title="profile">
-                Profile
-              </span>
-            </li>
-            <li className="sidebar-item">
-              <span className="e-icons info" />
-              <span className="e-text" title="info">
-                Info
-              </span>
-            </li>
-            <li className="sidebar-item">
-              <span className="e-icons settings" />
-              <span className="e-text" title="settings">
-                Settings
-              </span>
-            </li> */}
           </ul>
         </div>
       </SidebarComponent>
     </div>
   );
 }
-export default App;
+export default Sidebar;
