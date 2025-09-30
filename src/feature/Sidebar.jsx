@@ -52,55 +52,50 @@ function Sidebar() {
   }
 
   return (
-    <div className="control-section">
-      {/* Initializing the Sidebar component */}
-      <SidebarComponent
-        id="dockSidebar"
-        ref={(Sidebar) => (dockBar = Sidebar)}
-        enableDock={true}
-        dockSize="72px"
-        width="260px"
-        type="Push"
-      >
-        <div className="dock">
-          <div className="sidebarHeader">
-            <span className="e-text">
-              <img
-                src="/logo/Logo.svg"
-                alt="logo icon"
-                className="sidebarLogo"
-              ></img>
-            </span>
-            <span className="e-icon">
-              <img
-                src="/icons/sidebar/Double-arrow-Right-Disable.svg"
-                alt="arrow icon e-icons"
-                className="sidebarArrow"
-                onClick={toggleClick}
-              ></img>
-            </span>
-          </div>
-          <ul>
-            <ul className="SidebarList">
-              {sidebardData.map((list) => (
-                <li key={list.title} className={list.type && "listTitle"}>
-                  {list.type ? (
-                    ""
-                  ) : (
-                    <img
-                      src={list.icon}
-                      className="e-icons"
-                      alt="notif icon"
-                    ></img>
-                  )}
-                  <span className="e-text">{list.title}</span>
-                </li>
-              ))}
-            </ul>
-          </ul>
+    <SidebarComponent
+      id="dockSidebar"
+      ref={(Sidebar) => (dockBar = Sidebar)}
+      enableDock={true}
+      dockSize="72px"
+      width="260px"
+      target="test1"
+      enableRtl
+      position="Right"
+      // type="Push"
+    >
+      <div className="dock">
+        <div className="sidebarHeader">
+          <span className="e-text">
+            <img
+              src="/logo/Logo.svg"
+              alt="logo icon"
+              className="sidebarLogo"
+            ></img>
+          </span>
+          <span className="e-icon">
+            <img
+              src="/icons/sidebar/Double-arrow-Right-Disable.svg"
+              alt="arrow icon e-icons"
+              className="sidebarArrow"
+              onClick={toggleClick}
+            ></img>
+          </span>
         </div>
-      </SidebarComponent>
-    </div>
+
+        <ul className="SidebarList">
+          {sidebardData.map((list) => (
+            <li key={list.title} className={list.type && "listTitle"}>
+              {list.type ? (
+                ""
+              ) : (
+                <img src={list.icon} className="e-icons" alt="notif icon"></img>
+              )}
+              <span className="e-text">{list.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </SidebarComponent>
   );
 }
 export default Sidebar;

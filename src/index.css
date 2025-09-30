@@ -40,12 +40,14 @@
   font-weight: 700;
 }
 
+/* @import "../node_modules/@syncfusion/ej2/material.css";
 @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-react-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-navigations/styles/material.css"; */
 
 html {
   font-family: "iranSans";
 }
+
 html,
 body,
 #root {
@@ -53,5 +55,5 @@ body,
   padding: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  direction: rtl;
+  /* direction: rtl; */
 }
