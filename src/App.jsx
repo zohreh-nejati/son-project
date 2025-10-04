@@ -4,11 +4,10 @@ import Header from "./feature/Header.jsx";
 
 function App() {
   return (
-    <div className="layout" id="main-content container-fluid col-md-12 test1">
+    <div className="layout">
       <Sidebar />
-      <div className="main_content">
+      <div className="main-content" id="main-text">
         <Header />
-        <div style={{ textAlign: "right" }}>test</div>
       </div>
     </div>
   );
