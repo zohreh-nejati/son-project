@@ -1,13 +1,17 @@
 import "./App.css";
 import Sidebar from "./feature/Sidebar";
-import Header from "./feature/Header.jsx";
+import Appbar from "./feature/Appbar.jsx";
+import MainContentHeader from "./feature/MainContentHeader.jsx";
 
 function App() {
   return (
     <div className="layout">
       <Sidebar />
       <div className="main-content" id="main-text">
-        <Header />
+        <div>
+          <Appbar />
+          <MainContentHeader />
+        </div>
       </div>
     </div>
   );

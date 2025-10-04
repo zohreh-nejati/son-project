@@ -309,7 +309,7 @@ function Sidebar() {
     },
   ];
   let width = "290px";
-  let target = ".main-content";
+  // let target = ".main-content";
   let dockSize = "60px";
 
   let fields = {
@@ -364,7 +364,7 @@ function Sidebar() {
             ref={(Sidebar) => (sidebarobj = Sidebar)}
             width={width}
             height="100%"
-            target={target}
+            target=".main-content"
             style={{ visibility: "hidden" }}
             created={onCreate}
             close={onClose}
@@ -372,6 +372,7 @@ function Sidebar() {
             enableDock={true}
             enableRtl={true}
             position="Right"
+            type="Push"
           >
             <div className="sidebarHeader">
               <span className="e-text">

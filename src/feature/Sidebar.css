@@ -65,7 +65,7 @@
 /***********Override*************/
 #main-treeview .e-list-text {
   color: var(--secondary-light-transparent--100) !important;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -90,6 +90,7 @@
 .e-treeview .e-list-item {
   padding-bottom: 20px;
 }
+
 .e-treeview .e-list-item.e-active > .e-fullrow {
   padding: 20px;
   height: 40px;

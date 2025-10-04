@@ -4,3 +4,6 @@
 .main-content {
   height: 100%;
 }
+.content {
+  direction: rtl;
+}
