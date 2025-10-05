@@ -1,7 +1,17 @@
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import "./MainContentHeader.css";
+import { useContext } from "react";
+import { FormContext } from "./contextAPI/FormContext";
 
 export default function MainContentHeader() {
+  const { isFormOpen, setIsFormOpen } = useContext(FormContext);
+
+  console.log(isFormOpen);
+
+  function handleToggleForm() {
+    setIsFormOpen(!isFormOpen);
+  }
+
   return (
     <div className="main_content--Header">
       <div className="text_wrapper">
@@ -21,7 +31,7 @@ export default function MainContentHeader() {
             ></img>
           </div>
 
-          <ButtonComponent className="add-button">
+          <ButtonComponent cssClass="e-custom" onClick={handleToggleForm}>
             <img
               className="search-icon"
               alt="search icon"
