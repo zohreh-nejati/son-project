@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@syncfusion/ej2-base": "^31.1.22",
-    "@syncfusion/ej2-react-buttons": "^31.1.21",
-    "@syncfusion/ej2-react-navigations": "^31.1.20",
+    "@syncfusion/ej2-base": "latest",
+    "@syncfusion/ej2-react-buttons": "latest",
+    "@syncfusion/ej2-react-grids": "latest",
+    "@syncfusion/ej2-react-navigations": "latest",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

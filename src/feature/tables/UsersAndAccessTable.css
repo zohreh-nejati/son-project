@@ -1,0 +1,12 @@
+.action-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.e-grid .e-content .e-row .e-rowcell {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  overflow-wrap: anywhere !important;
+  padding: 12px 10px 0 0 !important;
+}
