@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch src/table.json --port 5000"
   },
   "dependencies": {
     "@syncfusion/ej2-base": "latest",
     "@syncfusion/ej2-react-buttons": "latest",
     "@syncfusion/ej2-react-grids": "latest",
     "@syncfusion/ej2-react-navigations": "latest",
+    "axios": "^1.12.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
