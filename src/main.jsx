@@ -18,6 +18,10 @@ import "@syncfusion/ej2-splitbuttons/styles/material.css";
 import "@syncfusion/ej2-notifications/styles/material.css";
 import "@syncfusion/ej2-react-grids/styles/material.css";
 
+/* import the ComboBox dependency styles */
+import "@syncfusion/ej2-react-inputs/styles/material.css";
+import "@syncfusion/ej2-react-dropdowns/styles/material.css";
+
 ////// base and buttons
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-react-navigations/styles/material.css";

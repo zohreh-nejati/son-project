@@ -13,7 +13,9 @@
   "dependencies": {
     "@syncfusion/ej2-base": "latest",
     "@syncfusion/ej2-react-buttons": "latest",
+    "@syncfusion/ej2-react-dropdowns": "^27.1.48",
     "@syncfusion/ej2-react-grids": "latest",
+    "@syncfusion/ej2-react-inputs": "^27.1.48",
     "@syncfusion/ej2-react-navigations": "latest",
     "axios": "^1.12.2",
     "react": "^19.1.1",

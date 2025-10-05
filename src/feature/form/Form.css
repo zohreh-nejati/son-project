@@ -1,13 +1,23 @@
 .form_wrapper {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  transform: translate(-700px);
   z-index: 2;
   background: var(--white--100);
   padding: 2rem;
   border-radius: 8px;
+  width: 496px;
+  height: 100%;
   box-shadow: var(--shadow--100);
+  transition: all 0.6s ease;
+}
+.form-active {
+  transform: translate(0);
+}
+.form_wrapper h1 {
+  font-size: 24px;
+  direction: rtl;
 }
 .overlay {
   position: fixed;
@@ -17,4 +27,71 @@
   height: 100vh;
   z-index: 1;
   background-color: var(--gray-transparent--100);
+}
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+.icon-wrapper {
+  position: absolute;
+  left: 2%;
+  top: 82%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.checkbox_Title {
+  direction: rtl;
+  color: var(--secondary-natural--100);
+  font-weight: 100;
+  margin: 0;
+  font-size: 14px;
+  align-self: flex-end;
+}
+.checkbox_wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 400px;
+}
+.btn_wrapper {
+  display: flex;
+  align-self: flex-start;
+  gap: 4px;
+}
+.e-btn.e-btn.e-lib.e-outline {
+  border-color: var(--yellow-primary--100) !important;
+  font-family: "iranSans";
+  color: var(--yellow-primary--100);
+  width: 64px;
+  height: 40px;
+  font-size: 14px;
+}
+/******* checkBox*******/
+.e-checkbox-wrapper .e-frame {
+  border-radius: 50% !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #d1d5db !important;
+}
+
+.e-checkbox-wrapper .e-frame.e-check {
+  background-color: var(--yellow-primary--100) !important;
+  border-color: var(--yellow-primary--100) !important;
+}
+.e-checkbox-wrapper .e-label {
+  color: var(--secondary-natural--100) !important;
+  font-family: "iranSans";
+}
+/******* border*******/
+.e-input {
+  border: 2px solid #d1d5db !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
 }

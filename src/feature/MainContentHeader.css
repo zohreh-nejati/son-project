@@ -52,7 +52,9 @@ hr {
 .e-custom {
   background-color: var(--yellow-primary--100) !important;
   color: var(--white--100) !important;
+  border-radius: 4px !important;
   font-weight: 400 !important;
+  font-size: 14px;
   width: 146px;
   height: 40px;
 }
