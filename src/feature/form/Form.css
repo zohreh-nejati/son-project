@@ -65,6 +65,7 @@
   display: flex;
   align-self: flex-start;
   gap: 4px;
+  height: 100px;
 }
 .e-btn.e-btn.e-lib.e-outline {
   border-color: var(--yellow-primary--100) !important;
@@ -74,6 +75,16 @@
   height: 40px;
   font-size: 14px;
 }
+.my-custom-icon {
+  background-image: url("icons/form/Eye-Disable.svg") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
 /******* checkBox*******/
 .e-checkbox-wrapper .e-frame {
   border-radius: 50% !important;

@@ -11,7 +11,6 @@ import {
   ButtonComponent,
   RadioButtonComponent,
 } from "@syncfusion/ej2-react-buttons";
-// import { valueAccessor } from "@syncfusion/ej2-react-grids";
 
 const position = [
   {
@@ -38,6 +37,7 @@ const fields = {
   parentValue: "pid",
 };
 const initialState = {
+  userId: "",
   email: "",
   password: "",
   firstName: "",
@@ -45,21 +45,21 @@ const initialState = {
   nationalId: "",
   mobile: "",
   activityPeriod: "",
+  organizationalLevel: "",
+  status: "active",
+  discription: "",
 };
 let formObject;
-
 export default function Form() {
-  const { isFormOpen } = useContext(FormContext);
+  const { isFormOpen, setIsFormOpen } = useContext(FormContext);
   const [selectedStatus, setSelectedStatus] = useState("active");
   const [state, dispatch] = useReducer(reducer, initialState);
-  const userId = useRef(null);
 
-  const testRegex = /^09[0-9۰-۹]{9}$/;
-  console.log(testRegex.test("09015405881"));
-  console.log(testRegex.test("۰۹۰۱۵۴۰۵۸۸۱"));
+  const formRefs = {
+    password: useRef(null),
+  };
 
   useEffect(function () {
-    userId.current.focusIn();
     const options = {
       rules: {
         userId: {
@@ -97,12 +97,41 @@ export default function Form() {
     formObject = new FormValidator("#userForm", options);
   }, []);
 
+  ///////////select the icon and add listener to it
+
+  useEffect(
+    function () {
+      console.log("click");
+      /////////change the type of the input
+      function handleClick() {
+        const input = formRefs.password.current.element;
+        input.type = input.type === "password" ? "text" : "password";
+      }
+
+      if (!formRefs.password.current) return;
+
+      const iconGroup = formRefs.password.current.element.parentElement;
+      const icon = iconGroup.querySelector(".my-custom-icon");
+
+      if (!icon) return;
+
+      icon.addEventListener("click", handleClick);
+
+      ///////clear event listener on each mount
+      return () => icon.removeEventListener("click", handleClick);
+    },
+    [formRefs.password.current]
+  );
+
   function reducer(state, action) {
     switch (action.type) {
       case "update":
         return { ...state, [action.field]: action.value };
+
+      case "reset":
+        return { ...initialState };
       default:
-        return initialState;
+        return state;
     }
   }
 
@@ -110,12 +139,28 @@ export default function Form() {
     dispatch({ type: "update", field, value: event.value });
   };
 
-  const onSubmit = () => {
-    formObject.validate();
-    if (formObject.validate()) {
+  const handleCancel = function () {
+    dispatch({ type: "reset" });
+    formObject.element.reset();
+    setIsFormOpen(false);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (formObject && formObject.validate()) {
+      console.log("Form is valid!");
+      // Submit logic here
+      setIsFormOpen(false);
       formObject.element.reset();
+    } else if (!formObject) {
+      console.error("Form validator not initialized");
     }
   };
+
+  function oncreate() {
+    formRefs.password.current.addIcon("append", "my-custom-icon");
+  }
 
   return (
     <>
@@ -123,7 +168,6 @@ export default function Form() {
         <h1>کاربر جدید</h1>
         <form id="userForm" className="input_wrapper">
           <TextBoxComponent
-            ref={userId}
             id="userId"
             name="userId"
             placeholder="شناسه کاربری "
@@ -137,6 +181,7 @@ export default function Form() {
           <TextBoxComponent
             id="password"
             name="password"
+            ref={formRefs.password}
             className="password"
             cssClass="e-outline"
             placeholder="پسورد اولیه تصادفی"
@@ -144,14 +189,8 @@ export default function Form() {
             type="password"
             change={update("password")}
             value={state.password}
+            created={oncreate}
           />
-          <span className="icon-wrapper">
-            <img
-              src="icons/form/Eye-Disable.svg"
-              alt="Calendar"
-              className="custom-icon"
-            />
-          </span>
           <TextBoxComponent
             id="firstName"
             name="firstName"
@@ -199,6 +238,7 @@ export default function Form() {
           />
           <DropDownTreeComponent
             fields={fields}
+            name="organizationalLevel"
             placeholder="سطح سازمانی *"
             popupHeight="220px"
             floatLabelType="Auto"
@@ -247,7 +287,9 @@ export default function Form() {
             >
               ذخیره
             </ButtonComponent>
-            <ButtonComponent cssClass="e-outline">انصراف</ButtonComponent>
+            <ButtonComponent cssClass="e-outline" onClick={handleCancel}>
+              انصراف
+            </ButtonComponent>
           </div>
         </form>
       </div>
