@@ -6,8 +6,6 @@ import { FormContext } from "./contextAPI/FormContext";
 export default function MainContentHeader() {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
 
-  console.log(isFormOpen);
-
   function handleToggleForm() {
     setIsFormOpen(!isFormOpen);
   }
