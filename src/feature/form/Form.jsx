@@ -11,6 +11,7 @@ import {
   ButtonComponent,
   RadioButtonComponent,
 } from "@syncfusion/ej2-react-buttons";
+import { useAxios } from "../API/useAxios";
 
 const position = [
   {
@@ -36,6 +37,7 @@ const fields = {
   child: "child",
   parentValue: "pid",
 };
+
 const initialState = {
   userId: "",
   email: "",
@@ -50,10 +52,14 @@ const initialState = {
   discription: "",
 };
 let formObject;
+
 export default function Form() {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
   const [selectedStatus, setSelectedStatus] = useState("active");
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // const [fromData, setFormData] = useState(null);
+  const { post } = useAxios();
 
   const formRefs = {
     password: useRef(null),
@@ -97,12 +103,10 @@ export default function Form() {
     formObject = new FormValidator("#userForm", options);
   }, []);
 
-  ///////////select the icon and add listener to it
-
+  ///////////select the password icon and add listener to it
   useEffect(
     function () {
-      console.log("click");
-      /////////change the type of the input
+      /////////change the type of the password input
       function handleClick() {
         const input = formRefs.password.current.element;
         input.type = input.type === "password" ? "text" : "password";
@@ -129,7 +133,9 @@ export default function Form() {
         return { ...state, [action.field]: action.value };
 
       case "reset":
-        return { ...initialState };
+        return {
+          ...initialState,
+        };
       default:
         return state;
     }
@@ -141,20 +147,32 @@ export default function Form() {
 
   const handleCancel = function () {
     dispatch({ type: "reset" });
-    formObject.element.reset();
+    if (formObject) {
+      formObject.reset();
+      formObject.element.reset();
+      console.log(formObject.element);
+    }
     setIsFormOpen(false);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (formObject && formObject.validate()) {
-      console.log("Form is valid!");
-      // Submit logic here
-      setIsFormOpen(false);
-      formObject.element.reset();
-    } else if (!formObject) {
-      console.error("Form validator not initialized");
+      const data = {
+        "شناسه کاربری": state.userId,
+        "نام و نام خانوادگی": `${state.firstName} ${state.lastName}`,
+        "آدرس ایمیل": state.email,
+        "انقضا فعالیت": state.activityPeriod,
+      };
+      try {
+        await post("http://localhost:5000/users", data);
+        console.log("Posted successfully");
+        formObject.element.reset();
+        setIsFormOpen(false);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 

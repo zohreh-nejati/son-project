@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useContext, useEffect } from "react";
 
 import {
   ColumnDirective,
@@ -11,8 +11,9 @@ import { Inject, Sort } from "@syncfusion/ej2-react-grids";
 import "./UsersAndAccessTable.css";
 
 import { L10n, setCulture } from "@syncfusion/ej2-base";
-
-import { getTableData } from "../API/UserTable.jsx";
+import { useAxios } from "../API/useAxios.jsx";
+import { useEffect } from "react";
+// import { useEffect, useState } from "react";
 
 setCulture("fa-IR");
 
@@ -25,19 +26,24 @@ L10n.load({
 });
 
 function UserAndAccessTable() {
-  const [tableData, setTableData] = useState([]);
+  // const [setTableData] = useState([]);
+  const { data, get, loading } = useAxios();
 
-  useEffect(function () {
-    async function fetchData() {
-      const data = await getTableData();
-      setTableData(data);
-    }
-    fetchData();
-  }, []);
+  useEffect(() => {
+    get("http://localhost:5000/users");
+  }, [get]);
+
+  // useEffect(() => {
+  //   if (currentData) {
+  //     setTableData(currentData);
+  //   }
+  // }, [currentData]);
+
+  if (loading) return <p>loading...</p>;
 
   return (
     <GridComponent
-      dataSource={tableData}
+      dataSource={data || []}
       locale="fa-IR"
       allowSorting={true}
       height={400}
